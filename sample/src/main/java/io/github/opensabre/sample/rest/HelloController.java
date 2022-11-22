@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/test")
 @Tag(name = "test")
 @Slf4j
-public class RegisteredClientController {
+public class HelloController {
 
 
     @Operation(summary = "测试接口", description = "hello xxx")
