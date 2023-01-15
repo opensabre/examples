@@ -9,11 +9,12 @@ version = '0.0.1-SNAPSHOT'
 sourceCompatibility = '11'
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
-    implementation 'io.github.opensabre:opensabre-base-starter:0.0.3'
+    implementation 'io.github.opensabre:opensabre-boot-starter:0.0.5'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

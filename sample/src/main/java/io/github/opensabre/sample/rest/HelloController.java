@@ -1,6 +1,7 @@
 package io.github.opensabre.sample.rest;
 
-import io.github.opensabre.common.core.entity.vo.Result;
+import com.google.common.collect.Lists;
+import com.google.common.collect.Maps;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
@@ -9,16 +10,38 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-@RestController
-@RequestMapping("/test")
+import java.util.List;
+import java.util.Map;
+
 @Tag(name = "test")
 @Slf4j
+@RestController
+@RequestMapping("/test")
 public class HelloController {
 
+    @Operation(summary = "测试接口1", description = "hello xxx")
+    @GetMapping("/echo")
+    public String echo(@RequestParam String name) {
+        return "Hello:" + name;
+    }
 
-    @Operation(summary = "测试接口", description = "hello xxx")
+    @Operation(summary = "测试接口2", description = "hello xxx")
     @GetMapping("/hello")
-    public Result hello(@RequestParam String name) {
-        return Result.success("Hello:" + name);
+    public int hello(@RequestParam Integer number) {
+        return number;
+    }
+
+    @Operation(summary = "测试接口3", description = "hello xxx")
+    @GetMapping("/map")
+    public Map<String, String> map() {
+        Map<String, String> newHashMap = Maps.newHashMap();
+        newHashMap.put("test", "123");
+        return newHashMap;
+    }
+
+    @Operation(summary = "测试接口4", description = "hello xxx")
+    @GetMapping("/list")
+    public List<String> list() {
+        return Lists.newArrayList("1", "34", "abc");
     }
 }
