@@ -2,7 +2,11 @@ package io.github.opensabre.sample.rest;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import io.github.opensabre.common.core.entity.vo.Result;
 import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.media.Content;
+import io.swagger.v3.oas.annotations.media.Schema;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -14,6 +18,7 @@ import java.util.List;
 import java.util.Map;
 
 @Tag(name = "test")
+@ApiResponse(responseCode = "200", description = "处理成功", content = @Content(schema = @Schema(implementation = Result.class)))
 @Slf4j
 @RestController
 @RequestMapping("/test")
