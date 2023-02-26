@@ -1,6 +1,7 @@
 package io.github.opensabre.sample.form;
 
 import io.github.opensabre.common.web.entity.form.BaseForm;
+import io.github.opensabre.common.web.validator.EnumString;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -14,11 +15,13 @@ import java.util.Date;
 @ToString
 @EqualsAndHashCode(callSuper = true)
 public class ValidForm extends BaseForm {
+
+    @Schema(title = "用户ID")
     @NotNull(message = "id不能为空", groups = {Add.class, Save.class})
     private int id;
 
-    @NotBlank(message = "⽤户不能为空!", groups = {Add.class, Save.class})
     @Schema(title = "用户名")
+    @NotBlank(message = "⽤户不能为空!", groups = {Add.class, Save.class})
     private String name;
 
     @Schema(title = "用户密码")
@@ -27,28 +30,35 @@ public class ValidForm extends BaseForm {
     private String password;
 
     @Schema(title = "用户邮箱")
-    @NotBlank(message = "⽤户邮箱不能为空!", groups = {Add.class})
+    @NotBlank(message = "⽤户邮箱不能为空!", groups = {Add.class, Save.class})
     @Email(message = "请输入正确的邮箱地址，如 abc123@qq.com", groups = {Add.class, Save.class})
     private String email;
 
+    @Schema(title = "年龄")
     @Min(value = 18, message = "年龄不能小于18周岁", groups = {Add.class})
     @Max(value = 120, message = "年龄不能大于120周岁", groups = {Add.class})
     private int age;
 
-    @Past
+    @Schema(title = "时间")
+    @Past(groups = {Add.class, Save.class})
     private Date time;
 
-    @Pattern(regexp = "^1[3,4,5,6,7,8,9]\\d{9}$", groups = {Add.class}, message = "请输入正确的手机号")
+    @Schema(title = "手机号")
+    @Pattern(regexp = "^1[3456789]\\d{9}$", groups = {Add.class}, message = "请输入正确的手机号")
     private String mobile;
 
+    @Schema(title = "类型")
+    @EnumString(message = "类型只能为Last、Second、First", value = {"Last", "Second", "First"}, groups = {Add.class, Save.class})
+    private String type;
+
     /**
-     * 新增
+     * 新增校验分组
      */
     public interface Add {
     }
 
     /**
-     * 修改
+     * 修改校验分组
      */
     public interface Save {
     }
