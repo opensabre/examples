@@ -6,15 +6,14 @@ plugins {
 
 group = 'io.github.opensabre'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
 
 repositories {
+    mavenLocal()
     mavenCentral()
 }
 
 dependencies {
-    implementation 'io.github.opensabre:opensabre-cache-starter:0.0.5'
-    implementation 'org.projectlombok:lombok:1.18.24'
+    implementation 'io.github.opensabre:opensabre-starter-cache:0.0.5'
     implementation 'org.springframework.boot:spring-boot-starter-web'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }

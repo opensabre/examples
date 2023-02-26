@@ -6,7 +6,6 @@ plugins {
 
 group = 'io.github.opensabre'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = '11'
 
 repositories {
     mavenLocal()
@@ -14,6 +13,11 @@ repositories {
 }
 
 dependencies {
+    annotationProcessor 'org.projectlombok:lombok'
+    compileOnly 'org.projectlombok:lombok'
+    testAnnotationProcessor 'org.projectlombok:lombok'
+    testCompileOnly 'org.projectlombok:lombok'
+
     implementation 'io.github.opensabre:opensabre-starter-boot:0.0.5'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
