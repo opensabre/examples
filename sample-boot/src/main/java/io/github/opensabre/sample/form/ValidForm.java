@@ -1,11 +1,13 @@
 package io.github.opensabre.sample.form;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import io.github.opensabre.common.web.entity.form.BaseForm;
 import io.github.opensabre.common.web.validator.EnumString;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.validation.constraints.*;
 import java.util.Date;
@@ -39,8 +41,10 @@ public class ValidForm extends BaseForm {
     @Max(value = 120, message = "年龄不能大于120周岁", groups = {Add.class})
     private int age;
 
-    @Schema(title = "时间")
-    @Past(groups = {Add.class, Save.class})
+    @Schema(title = "时间", example = "2023-02-22 14:56:10")
+    @Past(groups = {Add.class, Save.class}, message = "时间格式为yyyy-MM-dd HH:mm:ss，并且不能为将来的时间")
+    @JsonFormat(pattern = "yyyy-MM-dd HH:mm:ss")
+    @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date time;
 
     @Schema(title = "手机号")
