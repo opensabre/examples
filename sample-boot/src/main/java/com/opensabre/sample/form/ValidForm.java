@@ -3,6 +3,7 @@ package com.opensabre.sample.form;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import io.github.opensabre.common.web.entity.form.BaseForm;
 import io.github.opensabre.common.web.validator.EnumString;
+import io.github.opensabre.common.web.validator.Mobile;
 import io.swagger.v3.oas.annotations.media.Schema;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
@@ -47,9 +48,13 @@ public class ValidForm extends BaseForm {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private Date time;
 
-    @Schema(title = "手机号")
+    @Schema(title = "手机号1")
     @Pattern(regexp = "^1[3456789]\\d{9}$", groups = {Add.class}, message = "请输入正确的手机号")
-    private String mobile;
+    private String mobile1;
+
+    @Schema(title = "手机号2")
+    @Mobile(groups = {Add.class}, message = "请输入正确的手机号")
+    private String mobile2;
 
     @Schema(title = "类型")
     @EnumString(message = "类型只能为Last、Second、First", value = {"Last", "Second", "First"}, groups = {Add.class, Save.class})
