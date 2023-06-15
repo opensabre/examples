@@ -18,8 +18,9 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok'
     testCompileOnly 'org.projectlombok:lombok'
 
-    implementation 'io.github.opensabre:opensabre-starter-boot:0.0.6'
-    implementation 'io.github.opensabre:opensabre-starter-register:0.0.6'
+    implementation 'io.github.opensabre:opensabre-starter-boot:0.0.7'
+    implementation 'io.github.opensabre:opensabre-starter-register:0.0.7'
+    implementation 'io.github.opensabre:opensabre-starter-rpc:0.0.7'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

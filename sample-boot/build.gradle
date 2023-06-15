@@ -12,13 +12,17 @@ repositories {
     mavenCentral()
 }
 
+configurations.all {
+//    exclude group: 'org.springframework.boot', module: 'spring-boot-starter-tomcat'
+}
+
 dependencies {
     annotationProcessor 'org.projectlombok:lombok'
     compileOnly 'org.projectlombok:lombok'
     testAnnotationProcessor 'org.projectlombok:lombok'
     testCompileOnly 'org.projectlombok:lombok'
 
-    implementation 'io.github.opensabre:opensabre-starter-boot:0.0.6'
+    implementation 'io.github.opensabre:opensabre-starter-boot:0.0.7'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
