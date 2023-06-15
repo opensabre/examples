@@ -9,13 +9,12 @@ import io.swagger.v3.oas.annotations.media.Schema;
 import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
+import java.util.UUID;
 
 @Tag(name = "test")
 @ApiResponse(responseCode = "200", description = "处理成功", content = @Content(schema = @Schema(implementation = Result.class)))
@@ -37,10 +36,11 @@ public class HelloController {
     }
 
     @Operation(summary = "测试接口3", description = "hello xxx")
-    @GetMapping("/map")
-    public Map<String, String> map() {
+    @GetMapping("/map/{param}")
+    public Map<String, String> map(@PathVariable String param) {
         Map<String, String> newHashMap = Maps.newHashMap();
-        newHashMap.put("test", "123");
+        newHashMap.put("num", RandomStringUtils.randomAlphabetic(15));
+        newHashMap.put(param, UUID.randomUUID().toString());
         return newHashMap;
     }
 
