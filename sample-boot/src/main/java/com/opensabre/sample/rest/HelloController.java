@@ -2,6 +2,7 @@ package com.opensabre.sample.rest;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import com.opensabre.sample.entity.UserVo;
 import io.github.opensabre.common.core.entity.vo.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -49,4 +50,20 @@ public class HelloController {
     public List<String> list() {
         return Lists.newArrayList("1", "34", "abc");
     }
+
+    @Operation(summary = "测试接口4", description = "hello xxx")
+    @GetMapping("/user")
+    public UserVo user() {
+        UserVo userVo = UserVo.builder()
+                .userId(1234567890)
+                .name("张三")
+                .mobile("13711220098")
+                .email("abc123@123.com")
+                .password("1qazXSW@")
+                .orderId("A76883636636")
+                .address("上海市浦东新区上丰路1234号1栋2509室")
+                .build();
+        return userVo;
+    }
+
 }
