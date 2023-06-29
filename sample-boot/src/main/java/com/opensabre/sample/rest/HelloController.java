@@ -1,5 +1,7 @@
 package com.opensabre.sample.rest;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
 import com.opensabre.sample.entity.UserVo;
@@ -53,7 +55,7 @@ public class HelloController {
 
     @Operation(summary = "测试接口4", description = "hello xxx")
     @GetMapping("/user")
-    public UserVo user() {
+    public UserVo user() throws JsonProcessingException {
         UserVo userVo = UserVo.builder()
                 .userId(1234567890)
                 .name("张三")
@@ -63,6 +65,8 @@ public class HelloController {
                 .orderId("A76883636636")
                 .address("上海市浦东新区上丰路1234号1栋2509室")
                 .build();
+        log.info("userVo:{}", new ObjectMapper().writeValueAsString(userVo));
+        log.info("userVo email:{}, mobile={}", userVo.getEmail(), userVo.getMobile());
         return userVo;
     }
 
