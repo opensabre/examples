@@ -15,11 +15,11 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Tag(name = "valid")
-@ApiResponse(responseCode = "200", description = "处理成功", content = @Content(schema = @Schema(implementation = Result.class)))
 @Slf4j
 @RestController
+@Tag(name = "valid")
 @RequestMapping("/valid")
+@ApiResponse(responseCode = "200", description = "处理成功", content = @Content(schema = @Schema(implementation = Result.class)))
 public class ValidController {
 
     @Operation(summary = "数据校验接口1", description = "Form表单校验")

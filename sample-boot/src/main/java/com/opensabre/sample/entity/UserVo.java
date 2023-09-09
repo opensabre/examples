@@ -1,9 +1,10 @@
 package com.opensabre.sample.entity;
 
 import io.github.opensabre.boot.annotations.Desensitization;
-import io.github.opensabre.boot.sensitive.rest.DesensitizationTypeEnum;
 import io.github.opensabre.common.web.entity.vo.BaseVo;
 import lombok.*;
+
+import static io.github.opensabre.boot.sensitive.rule.DefaultSensitiveRule.*;
 
 @Data
 @Builder
@@ -11,18 +12,19 @@ import lombok.*;
 @AllArgsConstructor
 @EqualsAndHashCode(callSuper = true)
 public class UserVo extends BaseVo {
-    @Desensitization(type = DesensitizationTypeEnum.USER_ID)
     private long userId;
-    @Desensitization(type = DesensitizationTypeEnum.MOBILE_PHONE)
+    @Desensitization(type = MOBILE)
     private String mobile;
-    @Desensitization(type = DesensitizationTypeEnum.CHINESE_NAME)
+    @Desensitization(type = PHONE)
+    private String phone;
+    @Desensitization(type = NAME)
     private String name;
-    @Desensitization(type = DesensitizationTypeEnum.EMAIL)
+    @Desensitization(type = EMAIL)
     private String email;
-    @Desensitization(type = DesensitizationTypeEnum.ADDRESS)
+    @Desensitization(type = ADDRESS)
     private String address;
-    @Desensitization(type = DesensitizationTypeEnum.PASSWORD)
+    @Desensitization(type = PASSWORD)
     private String password;
-    @Desensitization(type = DesensitizationTypeEnum.CUSTOM, startInclude = 2, endExclude = 4)
+    @Desensitization(type = CUSTOM, retainPrefixCount = 2, retainSuffixCount = 4)
     private String orderId;
 }
