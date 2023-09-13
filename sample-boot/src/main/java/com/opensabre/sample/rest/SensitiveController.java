@@ -37,6 +37,7 @@ public class SensitiveController {
         log.info("userVo:{}", new ObjectMapper().writeValueAsString(userVo));
         log.info("userVo email:{}, mobile={} ,phone={}", userVo.getEmail(), userVo.getMobile(), userVo.getPhone());
         log.info("userVo password:{} , userVo passwd:{} key is {}", userVo.getPassword(), "1qaz@WSX", "key123");
+        log.info("name is 张四一，姓名：李四六，住址：{}", "中国台湾省台北市新竹县桃源村5号天下花园1幢103室");
         return userVo;
     }
 }
