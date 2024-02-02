@@ -24,7 +24,8 @@ public class ValidController {
 
     @Operation(summary = "数据校验接口1", description = "Form表单校验")
     @PostMapping({"/form", "/forms"})
-    public String formAdd(@Parameter(description = "表单校验", required = true) @Validated(ValidForm.Add.class) @RequestBody ValidForm validForm) {
+    public String formAdd(@Parameter(description = "表单校验", required = true) @Validated(ValidForm.Add.class)
+                          @RequestBody ValidForm validForm) {
         log.info("form is {}", validForm.getName());
         return validForm.toString();
     }

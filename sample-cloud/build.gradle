@@ -1,5 +1,7 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '2.7.5'
+    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
 group = 'io.github.opensabre'
@@ -16,9 +18,9 @@ dependencies {
     testAnnotationProcessor 'org.projectlombok:lombok'
     testCompileOnly 'org.projectlombok:lombok'
 
-    implementation 'io.github.opensabre:opensabre-starter-boot:0.0.7'
-    implementation 'io.github.opensabre:opensabre-starter-register:0.0.7'
-    implementation 'io.github.opensabre:opensabre-starter-rpc:0.0.7'
+    implementation 'io.github.opensabre:opensabre-starter-boot:0.0.8'
+    implementation 'io.github.opensabre:opensabre-starter-register:0.0.8'
+    implementation 'io.github.opensabre:opensabre-starter-rpc:0.0.8'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
