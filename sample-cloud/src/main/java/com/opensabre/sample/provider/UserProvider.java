@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.PathVariable;
 import java.util.Map;
 
 @Component
-@FeignClient(name = "sample-cloud")
+@FeignClient(name = "sample-provider", fallback = FallBackUserProvider.class)
 public interface UserProvider {
 
-    @GetMapping("test/map/{param}")
-    Result<Map<String, String>> getUser(@PathVariable String param);
+    @GetMapping("/user/{userId}")
+    Result<Map<String, String>> getUser(@PathVariable String userId);
 }
-
