@@ -18,13 +18,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
-import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
-import static io.github.opensabre.common.core.exception.SystemErrorType.SYSTEM_BUSY;
 
 @Tag(name = "user")
 @ApiResponse(responseCode = "200", description = "处理成功", content = @Content(schema = @Schema(implementation = Result.class)))
@@ -37,25 +35,26 @@ public class UserController {
     private IUserService userService;
 
     @Operation(summary = "用户管理", description = "hello user")
-    @SentinelResource(value = "getUser", fallback = "exceptionHandler")
+    @SentinelResource(value = "getUser", blockHandler = "exceptionHandler")
     @GetMapping("/get")
     public Map<String, String> getUser(@RequestParam String userId) {
         return userService.getUser(userId);
     }
 
     /**
-     * Block 异常处理函数，参数最后多一个 BlockException，其余与原函数一致.
+     * Block 异常处理函数，参数最后可多一个 BlockException，其余与原函数一致.
      *
-     * @param ex 中断异常
+     * @param userId 用户id
+     * @param ex     中断异常
      * @return 中断响应结果
      */
-    public Result exceptionHandler(BlockException ex) {
-        log.warn(SYSTEM_BUSY.getMesg(), ex.getMessage());
-        return Result.fail(SYSTEM_BUSY);
+    public Map<String, String> exceptionHandler(String userId, BlockException ex) {
+        log.warn("flow control param:{}, rule: {}", userId, ex.getRule());
+        return new HashMap<>();
     }
 
-    @PostConstruct
-    public void initFlowRules(){
+//    @PostConstruct
+    public void initFlowRules() {
         //1.创建存放限流规则的集合
         List<FlowRule> rules = new ArrayList<>();
         //2.创建限流规则
