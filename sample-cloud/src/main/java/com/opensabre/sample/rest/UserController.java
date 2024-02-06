@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.PostConstruct;
 import javax.annotation.Resource;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -34,12 +35,20 @@ public class UserController {
     @Resource
     private IUserService userService;
 
-    @Operation(summary = "用户管理", description = "hello user")
+    @Operation(summary = "获取用户", description = "hello user")
     @SentinelResource(value = "getUser", blockHandler = "exceptionHandler")
     @GetMapping("/get")
     public Map<String, String> getUser(@RequestParam String userId) {
         return userService.getUser(userId);
     }
+
+    @Operation(summary = "获取用户订单", description = "hello order")
+    @SentinelResource(value = "getOrder")
+    @GetMapping("/order")
+    public Map<String, String> getOrder(@RequestParam String userId) {
+        return userService.getUser(userId);
+    }
+
 
     /**
      * Block 异常处理函数，参数最后可多一个 BlockException，其余与原函数一致.
@@ -53,18 +62,18 @@ public class UserController {
         return new HashMap<>();
     }
 
-//    @PostConstruct
+    @PostConstruct
     public void initFlowRules() {
         //1.创建存放限流规则的集合
         List<FlowRule> rules = new ArrayList<>();
         //2.创建限流规则
         FlowRule rule = new FlowRule();
         //定义资源，表示sentinel会对这个资源生效
-        rule.setResource("getUser");
+        rule.setResource("getOrder");
         //定义限流规则类型
         rule.setGrade(RuleConstant.FLOW_GRADE_QPS);
         //定义QPS每秒能通过的请求个数
-        rule.setCount(1);
+        rule.setCount(2);
         rule.setStrategy(RuleConstant.STRATEGY_DIRECT);
         //3.将限流规则放入集合中
         rules.add(rule);
