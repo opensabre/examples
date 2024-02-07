@@ -49,6 +49,11 @@ public class UserController {
         return userService.getUser(userId);
     }
 
+    @Operation(summary = "获取用户地址", description = "hello address")
+    @GetMapping("/address")
+    public Map<String, String> getAddress(@RequestParam String userId) {
+        return userService.getUser(userId);
+    }
 
     /**
      * Block 异常处理函数，参数最后可多一个 BlockException，其余与原函数一致.
