@@ -16,7 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 @Slf4j
 @RestController
-@Tag(name = "sensitive")
+@Tag(name = "脱敏测试")
 @RequestMapping("/sensitive")
 @ApiResponse(responseCode = "200", description = "处理成功", content = @Content(schema = @Schema(implementation = Result.class)))
 public class SensitiveController {

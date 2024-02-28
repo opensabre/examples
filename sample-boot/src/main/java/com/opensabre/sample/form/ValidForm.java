@@ -5,12 +5,12 @@ import io.github.opensabre.common.web.entity.form.BaseForm;
 import io.github.opensabre.common.web.validator.EnumString;
 import io.github.opensabre.common.web.validator.Mobile;
 import io.swagger.v3.oas.annotations.media.Schema;
+import jakarta.validation.constraints.*;
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import javax.validation.constraints.*;
 import java.util.Date;
 
 @Data
@@ -37,7 +37,7 @@ public class ValidForm extends BaseForm {
     @Email(message = "请输入正确的邮箱地址，如 abc123@qq.com", groups = {Add.class, Save.class})
     private String email;
 
-    @Schema(title = "年龄")
+    @Schema(title = "年龄", description = "年龄范围为18~120周岁")
     @Min(value = 18, message = "年龄不能小于18周岁", groups = {Add.class})
     @Max(value = 120, message = "年龄不能大于120周岁", groups = {Add.class})
     private int age;
@@ -56,7 +56,7 @@ public class ValidForm extends BaseForm {
     @Mobile(groups = {Add.class}, message = "请输入正确的手机号")
     private String mobile2;
 
-    @Schema(title = "类型")
+    @Schema(title = "类型", description = "类型只能为Last、Second、First")
     @EnumString(message = "类型只能为Last、Second、First", value = {"Last", "Second", "First"}, groups = {Add.class, Save.class})
     private String type;
 

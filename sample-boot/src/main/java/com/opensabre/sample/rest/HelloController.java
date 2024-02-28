@@ -19,24 +19,24 @@ import java.util.Map;
 
 @Slf4j
 @RestController
-@Tag(name = "test")
+@Tag(name = "返回类型测试")
 @RequestMapping("/test")
 @ApiResponse(responseCode = "200", description = "处理成功", content = @Content(schema = @Schema(implementation = Result.class)))
 public class HelloController {
 
-    @Operation(summary = "测试接口1", description = "hello xxx")
+    @Operation(summary = "返回String", description = "String")
     @GetMapping("/echo")
-    public String echo(@RequestParam String name) {
+    public String echo(@RequestParam("name") String name) {
         return "Hello:" + name;
     }
 
-    @Operation(summary = "测试接口2", description = "hello xxx")
+    @Operation(summary = "返回int", description = "int")
     @GetMapping("/hello")
-    public int hello(@RequestParam Integer number) {
+    public int hello(@RequestParam("number") Integer number) {
         return number;
     }
 
-    @Operation(summary = "测试接口3", description = "hello xxx")
+    @Operation(summary = "返回Map", description = "Map")
     @GetMapping("/map")
     public Map<String, String> map() {
         Map<String, String> newHashMap = Maps.newHashMap();
@@ -44,7 +44,7 @@ public class HelloController {
         return newHashMap;
     }
 
-    @Operation(summary = "测试接口4", description = "hello xxx")
+    @Operation(summary = "返回List<String>", description = "List<String>")
     @GetMapping("/list")
     public List<String> list() {
         return Lists.newArrayList("1", "34", "abc");
