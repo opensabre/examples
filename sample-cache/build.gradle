@@ -1,11 +1,20 @@
 plugins {
     id 'java'
-    id 'org.springframework.boot' version '2.7.5'
-    id 'io.spring.dependency-management' version '1.0.15.RELEASE'
 }
 
 group = 'io.github.opensabre'
 version = '0.0.1-SNAPSHOT'
+
+java {
+    sourceCompatibility = "16.PREVIEW"
+    targetCompatibility = "16.PREVIEW"
+}
+compileJava{
+    options.compilerArgs.add '-parameters'
+}
+compileTestJava{
+    options.compilerArgs.add '-parameters'
+}
 
 repositories {
     mavenLocal()
@@ -16,13 +25,13 @@ configurations.all {
 }
 
 dependencies {
-    annotationProcessor 'org.projectlombok:lombok'
-    compileOnly 'org.projectlombok:lombok'
-    testAnnotationProcessor 'org.projectlombok:lombok'
-    testCompileOnly 'org.projectlombok:lombok'
+    annotationProcessor 'org.projectlombok:lombok:1.18.24'
+    compileOnly 'org.projectlombok:lombok:1.18.24'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
+    testCompileOnly 'org.projectlombok:lombok:1.18.24'
 
-    implementation 'io.github.opensabre:opensabre-starter-cache:0.0.8'
-    implementation 'io.github.opensabre:opensabre-starter-boot:0.0.8'
+    implementation 'io.github.opensabre:opensabre-starter-cache:0.1.0'
+    implementation 'io.github.opensabre:opensabre-starter-boot:0.1.0'
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 

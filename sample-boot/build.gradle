@@ -6,8 +6,14 @@ group = 'io.github.opensabre'
 version = '0.0.1-SNAPSHOT'
 
 java {
-    sourceCompatibility = '17'
-    targetCompatibility = '17'
+    sourceCompatibility = "16.PREVIEW"
+    targetCompatibility = "16.PREVIEW"
+}
+compileJava{
+    options.compilerArgs.add '-parameters'
+}
+compileTestJava{
+    options.compilerArgs.add '-parameters'
 }
 
 repositories {

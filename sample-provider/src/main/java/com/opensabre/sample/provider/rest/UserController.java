@@ -25,7 +25,7 @@ public class UserController {
 
     @Operation(summary = "用户管理", description = "hello user")
     @GetMapping("/{userId}")
-    public Map<String, String> get(@PathVariable String userId) {
+    public Map<String, String> get(@PathVariable("userId") String userId) {
         Map<String, String> userMap = new HashMap<>();
         userMap.put("id", userId);
         userMap.put("name", RandomStringUtils.randomAlphabetic(5));

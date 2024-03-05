@@ -3,7 +3,7 @@ package com.opensabre.sample.cache.service;
 import com.opensabre.sample.cache.provider.RemoteProvider;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
+import jakarta.annotation.Resource;
 
 @Service
 public class ConfigService implements IConfigService {

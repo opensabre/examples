@@ -1,9 +1,9 @@
 package com.opensabre.sample.service;
 
 import com.opensabre.sample.provider.UserProvider;
+import jakarta.annotation.Resource;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.Resource;
 import java.util.Map;
 
 @Service
