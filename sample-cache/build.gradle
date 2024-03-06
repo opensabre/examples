@@ -9,19 +9,16 @@ java {
     sourceCompatibility = "16.PREVIEW"
     targetCompatibility = "16.PREVIEW"
 }
-compileJava{
+compileJava {
     options.compilerArgs.add '-parameters'
 }
-compileTestJava{
+compileTestJava {
     options.compilerArgs.add '-parameters'
 }
 
 repositories {
     mavenLocal()
     mavenCentral()
-}
-
-configurations.all {
 }
 
 dependencies {
