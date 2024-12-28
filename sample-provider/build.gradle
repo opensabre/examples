@@ -1,25 +1,26 @@
 plugins {
     id 'java'
+    id 'org.springframework.boot' version '3.2.3'
+    id 'io.spring.dependency-management' version '1.1.4'
 }
 
 group = 'com.opensabre.sample'
 version = '0.0.1-SNAPSHOT'
 
-java {
-    sourceCompatibility = "16.PREVIEW"
-    targetCompatibility = "16.PREVIEW"
-}
-compileJava {
-    options.compilerArgs.add '-parameters'
-}
-compileTestJava {
-    options.compilerArgs.add '-parameters'
+ext {
+    lombokVersion = '1.18.30'
+    opensabreVersion = '0.1.0'
 }
 
-configurations {
-    compileOnly {
-        extendsFrom annotationProcessor
-    }
+java {
+    sourceCompatibility = JavaVersion.VERSION_17
+    targetCompatibility = JavaVersion.VERSION_17
+}
+
+// 统一的编译器参数配置
+tasks.withType(JavaCompile).configureEach {
+    options.compilerArgs.add '-parameters'
+    options.encoding = 'UTF-8'
 }
 
 repositories {
@@ -28,15 +29,27 @@ repositories {
 }
 
 dependencies {
-    annotationProcessor 'org.projectlombok:lombok:1.18.24'
-    compileOnly 'org.projectlombok:lombok:1.18.24'
-    testAnnotationProcessor 'org.projectlombok:lombok:1.18.24'
-    testCompileOnly 'org.projectlombok:lombok:1.18.24'
+    // Lombok配置
+    annotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    compileOnly "org.projectlombok:lombok:${lombokVersion}"
+    testAnnotationProcessor "org.projectlombok:lombok:${lombokVersion}"
+    testCompileOnly "org.projectlombok:lombok:${lombokVersion}"
 
-    implementation 'io.github.opensabre:opensabre-starter-rpc:0.1.0'
-    testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    implementation "io.github.opensabre:opensabre-starter-rpc:${opensabreVersion}"
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
 }
 
-tasks.named('test') {
+test {
     useJUnitPlatform()
+}
+
+// 添加一些有用的任务配置
+tasks.withType(Test).configureEach {
+    systemProperty 'file.encoding', 'UTF-8'
+}
+
+// 配置jar任务
+jar {
+    enabled = true
+    archiveClassifier = ''
 }
