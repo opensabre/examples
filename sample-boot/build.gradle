@@ -9,12 +9,16 @@ version = '0.0.1-SNAPSHOT'
 
 ext {
     lombokVersion = '1.18.30'
-    opensabreVersion = '0.1.1'
+    opensabreVersion = '0.2.0'
 }
 
 java {
     sourceCompatibility = JavaVersion.VERSION_17
     targetCompatibility = JavaVersion.VERSION_17
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(21) // 降级到支持的版本
+        // 或使用 17, 11 等长期支持版本
+    }
 }
 
 // 统一的编译器参数配置
