@@ -12,7 +12,7 @@ import org.junit.jupiter.api.Test;
 import java.io.IOException;
 
 class SampleApplicationTests {
-    String httpUrl = "http://192.168.5.5:8090/user/admin123";
+    String httpUrl = "http://127.0.0.1:8090/user/admin123";
 
     @Test
     public void httpclient() throws IOException {
@@ -28,10 +28,11 @@ class SampleApplicationTests {
                 .build());
 
         HttpResponse response = httpClient.execute(request);
-        System.out.println(EntityUtils.toString(response.getEntity()));
+        String responseBody = EntityUtils.toString(response.getEntity());
+        System.out.println(responseBody);
         if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
             //返回json格式
-            res = EntityUtils.toString(response.getEntity());
+            res = responseBody;
         }
         System.out.println(res);
     }

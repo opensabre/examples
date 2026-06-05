@@ -8,8 +8,8 @@ group = 'io.github.opensabre'
 version = '0.0.1-SNAPSHOT'
 
 ext {
-    lombokVersion = '1.18.30'
-    opensabreVersion = '0.2.0'
+    lombokVersion = '1.18.42'
+    opensabreVersion = '0.3.0'
 }
 
 java {
@@ -45,6 +45,7 @@ dependencies {
     
     // 测试依赖
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
+    testRuntimeOnly 'org.junit.platform:junit-platform-launcher'
 }
 
 test {
