@@ -41,6 +41,7 @@ dependencies {
     // 项目依赖
     implementation "io.github.opensabre:opensabre-starter-cache:${opensabreVersion}"
     implementation "io.github.opensabre:opensabre-starter-boot:${opensabreVersion}"
+    implementation "io.github.opensabre:opensabre-starter-webmvc:${opensabreVersion}"
     
     // 测试依赖
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
