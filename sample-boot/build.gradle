@@ -43,6 +43,7 @@ dependencies {
     implementation "io.github.opensabre:opensabre-starter-boot:${opensabreVersion}"
     implementation "io.github.opensabre:opensabre-starter-webmvc:${opensabreVersion}"
     implementation "io.github.opensabre:opensabre-starter-governance:${opensabreVersion}"
+    implementation "io.github.opensabre:opensabre-starter-eda:${opensabreVersion}"
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
     
     // 测试依赖
