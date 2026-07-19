@@ -1,39 +1,12 @@
 package com.opensabre.sample;
 
-import org.apache.http.HttpResponse;
-import org.apache.http.HttpStatus;
-import org.apache.http.client.config.RequestConfig;
-import org.apache.http.client.methods.HttpGet;
-import org.apache.http.impl.client.CloseableHttpClient;
-import org.apache.http.impl.client.HttpClientBuilder;
-import org.apache.http.util.EntityUtils;
 import org.junit.jupiter.api.Test;
+import org.springframework.boot.test.context.SpringBootTest;
 
-import java.io.IOException;
-
+@SpringBootTest
 class SampleApplicationTests {
-    String httpUrl = "http://127.0.0.1:8090/user/admin123";
 
     @Test
-    public void httpclient() throws IOException {
-        CloseableHttpClient httpClient = HttpClientBuilder.create()
-//                .setProxy(new HttpHost("127.0.0.1", 9788))
-                .build();
-        String res = "";
-        HttpGet request = new HttpGet(httpUrl);
-        request.setConfig(RequestConfig.custom()
-                .setSocketTimeout(-1)
-                .setConnectTimeout(-1)
-                .setExpectContinueEnabled(false)
-                .build());
-
-        HttpResponse response = httpClient.execute(request);
-        String responseBody = EntityUtils.toString(response.getEntity());
-        System.out.println(responseBody);
-        if (response.getStatusLine().getStatusCode() == HttpStatus.SC_OK) {
-            //返回json格式
-            res = responseBody;
-        }
-        System.out.println(res);
+    void contextLoads() {
     }
 }

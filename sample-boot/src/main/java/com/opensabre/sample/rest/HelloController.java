@@ -2,6 +2,8 @@ package com.opensabre.sample.rest;
 
 import com.google.common.collect.Lists;
 import com.google.common.collect.Maps;
+import io.github.opensabre.governance.audit.annotations.Audit;
+import io.github.opensabre.governance.audit.annotations.OperationType;
 import io.github.opensabre.common.core.entity.vo.Result;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.media.Content;
@@ -26,6 +28,7 @@ import java.util.Map;
 public class HelloController {
 
     @Operation(summary = "返回String", description = "String", security = {@SecurityRequirement(name = "Authorization")})
+    @Audit(operationType = OperationType.QUERY, description = "echo audit sample", module = "SAMPLE", key = "#name")
     @GetMapping("/echo")
     public String echo(@RequestParam("name") String name) {
         return "Hello:" + name;
