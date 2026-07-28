@@ -8,4 +8,7 @@
 | `sample-provider` | 验证服务提供者能力。 | 参考模块内 `HELP.md` 和构建配置。 | 固化服务契约与调用验证。 |
 | `sample-webflux` | 验证响应式 Web 能力。 | 启动后验证响应式端点。 | 增加非阻塞与错误处理用例。 |
 
+[Servlet 内部 Token 实验](internal-token-servlet-poc.md) 联合验证 `sample-cloud` 与
+`sample-provider`，不包含 `sample-webflux`。
+
 每个示例的独立文档应覆盖：介绍、框架依赖、前置条件、启动、验证流程、预期结果和规划。

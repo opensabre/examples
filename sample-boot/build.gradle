@@ -9,7 +9,7 @@ version = '0.0.1-SNAPSHOT'
 
 ext {
     lombokVersion = '1.18.42'
-    opensabreVersion = '0.5.0'
+    opensabreVersion = '0.7.0'
 }
 
 java {
@@ -44,6 +44,7 @@ dependencies {
     implementation "io.github.opensabre:opensabre-starter-webmvc:${opensabreVersion}"
     implementation "io.github.opensabre:opensabre-starter-governance:${opensabreVersion}"
     implementation "io.github.opensabre:opensabre-starter-eda:${opensabreVersion}"
+    implementation "io.github.opensabre:opensabre-starter-security:${opensabreVersion}"
     implementation 'org.springframework.boot:spring-boot-starter-oauth2-resource-server'
     
     // 测试依赖

@@ -7,4 +7,5 @@
 | [架构与使用](architecture.md) | 示例仓库定位与使用边界 |
 | [开发与验证](development.md) | 构建、运行和回归要求 |
 | [示例模块地图](modules/README.md) | 各 sample 的功能、使用、流程和规划 |
+| [Servlet 内部 Token 实验](modules/internal-token-servlet-poc.md) | 首应用 JWT 校验、Feign 重签和下游验签 |
 | [规划](roadmap.md) | 示例覆盖演进 |
