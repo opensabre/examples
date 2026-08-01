@@ -9,7 +9,7 @@ version = '0.0.1-SNAPSHOT'
 
 ext {
     lombokVersion = '1.18.42'
-    opensabreVersion = '0.7.0'
+    opensabreVersion = '0.7.1'
 }
 
 java {

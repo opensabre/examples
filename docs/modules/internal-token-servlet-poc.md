@@ -2,7 +2,7 @@
 
 ## 目标
 
-验证 0.7.0 的 Servlet 调用链：
+验证 0.7.1 的 Servlet 调用链：
 
 ```text
 外部 JWT -> sample-cloud -> x-client-token -> sample-provider
@@ -57,6 +57,9 @@ GET http://localhost:8080/user/get?userId=101
 - `sample-cloud` 调用 `sample-provider` 时只发送新签发的 `x-client-token`。
 - 直接匿名调用 `sample-provider/user/101` 返回 401。
 - 两个应用使用不同密钥、错误 audience 或过期 Token 时，下游返回 401。
+- 同时携带 Bearer 与内部 Token 时返回 401，错误标识为
+  `AMBIGUOUS_CREDENTIALS`。
+- `ROLE_` 角色、`SCOPE_` scope 和直接 Authority 在调用后保持原有鉴权语义。
 
 ## 轮换实验
 
