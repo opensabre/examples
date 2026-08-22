@@ -2,7 +2,7 @@
 
 ## 目标
 
-验证 0.7.0 的 Servlet 调用链：
+验证 Framework 1.1.1 的 Servlet 内部 Token 调用链：
 
 ```text
 外部 JWT -> sample-cloud -> x-client-token -> sample-provider
