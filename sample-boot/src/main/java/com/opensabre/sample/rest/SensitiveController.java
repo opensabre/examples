@@ -1,7 +1,7 @@
 package com.opensabre.sample.rest;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
+import tools.jackson.core.JacksonException;
+import tools.jackson.databind.ObjectMapper;
 import com.opensabre.sample.entity.UserVo;
 import io.github.opensabre.common.core.entity.vo.Result;
 import io.swagger.v3.oas.annotations.Operation;
@@ -23,7 +23,7 @@ public class SensitiveController {
 
     @Operation(summary = "脱敏测试接口", description = "脱敏测试")
     @GetMapping("/user")
-    public UserVo user() throws JsonProcessingException {
+    public UserVo user() throws JacksonException {
         UserVo userVo = UserVo.builder()
                 .userId(1234567890)
                 .name("张三一")

@@ -11,7 +11,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-@SpringBootTest
+@SpringBootTest(properties = {
+        "spring.cloud.nacos.config.enabled=false",
+        "spring.cloud.nacos.discovery.enabled=false",
+        "opensabre.governance.enabled=false"
+})
 class SampleApplicationTests {
 
     @Autowired
